@@ -1,5 +1,6 @@
 import { Avatar, Box, Card, Link, Paper, Typography } from "@mui/material";
 import profile_picture from "../../assets/profile_picture.jpg";
+import Typewriter from "typewriter-effect";
 
 const Home = () => {
   return (
@@ -84,32 +85,32 @@ const Home = () => {
             sx={{
               color: "#fff",
               fontSize: "22px",
+              height: "150px",
+              margin: "20px 0 0",
               fontFamily: "'Anonymous Pro', monospace;",
               "@media (min-width: 800px)": {
                 fontSize: "26px",
               },
             }}
           >
-            Hello,
+            <Typewriter
+              options={{
+                strings: [
+                  "Hello, My name is Rafhael Mallorga and I'm a Full-Stack Junior Developer. . .",
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 80,
+                pauseFor: [50000],
+              }}
+            />
           </Typography>
-          <Typography
-            sx={{
-              color: "#fff",
-              fontSize: "22px",
-              fontFamily: "'Anonymous Pro', monospace;",
-              "@media (min-width: 800px)": {
-                fontSize: "26px",
-                marginBottom: "20px",
-              },
-            }}
-          >
-            My name is Rafhael Mallorga and I'm a Full-Stack Junior Developer. .
-            .
-          </Typography>
+
           <Typography
             sx={{
               color: "#646569",
               fontSize: "14px",
+              margin: "0 0 20px",
               "@media (min-width: 800px)": {
                 marginBottom: "30px",
               },
@@ -125,6 +126,7 @@ const Home = () => {
               fontSize: "20px",
               textDecoration: "none",
               width: "90%",
+              margin: "0 0 20px",
               fontFamily: "'Anonymous Pro', monospace;",
               "@media (min-width: 800px)": {
                 marginTop: "30px",

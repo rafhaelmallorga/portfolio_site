@@ -5,6 +5,7 @@ import React from "react";
 import background_code from "../../assets/background_code.jpg";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import Carousel from "react-elastic-carousel";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -12,53 +13,41 @@ const steps = [
   {
     tag: "Introduce",
     label: "Hello, I'm Rafhael Mallorga",
-    phrase: "Starting a new adventure",
+    phrase: "Starting on a new adventure",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem.",
+      "I've been studying web development at Kenzie Academy for the last year, where I've been immersed in Front and Back-End development. I also had the opportunity to work as a coach for younger students, helping them with any doubts. Some of the technologies I had contact with are: HTML, CSS, JavaScript, TypeScipt, MUI, Chakra UI, NodeJS, Express, Docker, PostegreSQL, MongoDB, and others...",
   },
   {
     tag: "Experience",
-    label: "Hello, I'm Rafhael Mallorga",
-    phrase: "Starting a new adventure",
+    label: "What I've been doing?",
+    phrase: "A brief summary of my journey...",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem.",
+      "My first contact with computing was an hardware course when I was 16, but around that time I realized that hardware wasn't exactly what I wanted to do. I worked for a while as an account manager at a software company, but just a year ago I had the opportunity to actually study programming and then I discovered that programming was exactly what I was looking for.",
   },
   {
-    tag: "Introduce",
-    label: "Hello, I'm Rafhael Mallorga",
-    phrase: "Starting a new adventure",
+    tag: "Graduation",
+    label: "And about my education background?",
+    phrase: "Could this experience help me in programming?",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem.",
+      "My original degree was in Civil Aviation at Universidade Anhembi Morumbi and my practical training at Aeroclube de São Paulo as a commercial aircraft pilot. I have 10 years of experience and my main occupation was as a flight instructor. My experience as a flight instructor provided me with some very important soft skills for any area, such as clear communication, assertiveness, risk management, CRM, etc...",
   },
   {
-    tag: "Introduce",
-    label: "Hello, I'm Rafhael Mallorga",
-    phrase: "Starting a new adventure",
+    tag: "Future",
+    label: "What are my plans?",
+    phrase: "A drop in the ocean...",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusantium eligendi ut fugit eum architecto perferendis asperiores tempora dignissimos? Neque iure porro facere quasi, dolores eum dolorum ad sapiente rem.",
+      "I'm very new to the world of programming and the more I learn, the more I'm fascinated by the range of possibilities. My main goal today is to improve myself in Front and Back-End web development to have a solid foundation, and in the future to venture into blockchain and metaverse.",
   },
 ];
 
 const About = () => {
-  const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = steps.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   return (
     <Paper
       id="About"
       elevation={0}
       sx={{
         backgroundColor: "#25262A",
-        maxWidth: "100vw",
+        maxWidth: "100%",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -70,68 +59,60 @@ const About = () => {
         backgroundSize: "cover",
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: 800 }}>
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            height: 50,
-            pl: 2,
-            color: "#fff",
-            backgroundColor: "transparent",
-          }}
-        ></Paper>
-        <Box sx={{ height: "100%", width: "100%" }}>
-          <Typography sx={{ fontSize: "16px", color: "#999ba0" }}>
-            {steps[activeStep].tag}
-          </Typography>
-          <Typography sx={{ fontSize: "30px", color: "#fff" }}>
-            {steps[activeStep].label}
-          </Typography>
-          <Typography sx={{ fontSize: "22px", color: "#fff" }}>
-            {steps[activeStep].phrase}
-          </Typography>
-          <Typography sx={{ fontSize: "16px", color: "#999ba0" }}>
-            {steps[activeStep].description}
-          </Typography>
-        </Box>
-        <MobileStepper
-          variant="dots"
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          sx={{ backgroundColor: "transparent" }}
-          nextButton={
-            <Button
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === maxSteps - 1}
+      <Box
+        sx={{
+          width: "90%",
+        }}
+      >
+        <Carousel>
+          {steps.map((step, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                "@media (min-width: 800px)": {
+                  width: "400px",
+                },
+              }}
             >
-              Next
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowLeft />
-              ) : (
-                <KeyboardArrowRight />
-              )}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowRight />
-              ) : (
-                <KeyboardArrowLeft />
-              )}
-              Back
-            </Button>
-          }
-        />
+              <Typography
+                variant="span"
+                sx={{
+                  margin: "20px 0",
+                  color: "#8b8c92",
+                  fontFamily: "'Roboto', sans-serif",
+                }}
+              >
+                {step.tag}
+              </Typography>
+              <Typography variant="h3" sx={{ fontSize: "30px", color: "#fff" }}>
+                {step.label}
+              </Typography>
+              <Typography
+                variant="p"
+                sx={{
+                  color: "#fff",
+                  margin: "20px 0",
+                  fontFamily: "'Roboto', sans-serif",
+                  fontStyle: "italic",
+                }}
+              >
+                {step.phrase}
+              </Typography>
+              <Typography
+                variant="p"
+                sx={{
+                  color: "#8b8c92",
+                  fontFamily: "'Roboto', sans-serif",
+                  textAlign: "justify",
+                }}
+              >
+                {step.description}
+              </Typography>
+            </Box>
+          ))}
+        </Carousel>
       </Box>
     </Paper>
   );
