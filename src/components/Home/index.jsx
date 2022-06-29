@@ -1,112 +1,162 @@
-import { Avatar, Card, Link, Paper, Typography } from "@mui/material";
+import { Avatar, Box, Card, Link, Paper, Typography } from "@mui/material";
 import profile_picture from "../../assets/profile_picture.jpg";
+import Typewriter from "typewriter-effect";
 
 const Home = () => {
   return (
     <Paper
+      id="Home"
       elevation={0}
       sx={{
         backgroundColor: "#2D2E32",
-        maxWidth: "100vw",
-        height: "calc(100vh - 64px)",
+        width: "100%",
+        height: "100vh",
         display: "flex",
-        flexDirection: "column",
+
         justifyContent: "space-around",
         alignItems: "center",
         borderRadius: "0",
+        "@media (min-width: 700px)": {
+          flexDirection: "row-reverse",
+        },
       }}
     >
-      <Avatar
-        src={profile_picture}
-        alt="Rafhael Mallorga Picture"
+      <Box
         sx={{
-          width: "200px",
-          height: "200px",
-          margin: "20px",
-        }}
-      />
-      <Card
-        elevation={0}
-        sx={{
-          width: "90%",
-          backgroundColor: "#2D2E32",
+          width: "100%",
+          maxWidth: "1200px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
           justifyContent: "space-around",
-          flexGrow: "1",
+          alignItems: "center",
+          "@media (min-width: 700px)": {
+            flexDirection: "row-reverse",
+          },
         }}
       >
-        <Card
+        <Avatar
+          src={profile_picture}
+          alt="Rafhael Mallorga Picture"
           sx={{
-            padding: "2px 20px",
-            backgroundColor: "#6EF2A4",
+            width: "200px",
+            height: "200px",
+            margin: "20px",
+            "@media (min-width: 800px)": {
+              width: "300px",
+              height: "300px",
+            },
+            "@media (min-width: 1200px)": {
+              width: "550px",
+              height: "550px",
+            },
           }}
-        >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-            }}
-          >
-            Full-Stack Developer
-          </Typography>
-        </Card>
-        <Typography
-          sx={{
-            color: "#fff",
-            fontSize: "24px",
-          }}
-        >
-          Hello,
-        </Typography>
-        <Typography
-          sx={{
-            color: "#fff",
-            fontSize: "24px",
-          }}
-        >
-          My name is Rafhael Mallorga and I'm a Full-Stack Junior Developer. . .
-        </Typography>
-        <Typography
-          sx={{
-            color: "#646569",
-            fontSize: "14px",
-          }}
-        >
-          I'm in the middle of a carrear change, very excited to learn more and
-          more every day. . .
-        </Typography>
-        <Link
-          href="#"
-          sx={{
-            color: "#5CC185",
-            fontSize: "20px",
-            textDecoration: "none",
-            width: "90%",
-          }}
-        >
-          HIRE ME!
-        </Link>
+        />
         <Card
           elevation={0}
           sx={{
-            display: "flex",
+            width: "90%",
+            maxWidth: "400px",
             backgroundColor: "#2D2E32",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "space-around",
+            flexGrow: "1",
           }}
         >
-          <Typography sx={{ color: "#fff", fontSize: "30px" }}>1</Typography>
+          <Card
+            sx={{
+              padding: "2px 20px",
+              backgroundColor: "#6EF2A4",
+              "@media (min-width: 800px)": {
+                marginBottom: "20px",
+              },
+            }}
+          >
+            <Typography
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
+              Full-Stack Developer
+            </Typography>
+          </Card>
+          <Typography
+            sx={{
+              color: "#fff",
+              fontSize: "22px",
+              height: "150px",
+              margin: "20px 0 0",
+              fontFamily: "'Anonymous Pro', monospace;",
+              "@media (min-width: 800px)": {
+                fontSize: "26px",
+              },
+            }}
+          >
+            <Typewriter
+              options={{
+                strings: [
+                  "Hello, My name is Rafhael Mallorga and I'm a Full-Stack Junior Developer. . .",
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 80,
+                pauseFor: [50000],
+              }}
+            />
+          </Typography>
+
           <Typography
             sx={{
               color: "#646569",
               fontSize: "14px",
-              width: "80px",
-              marginLeft: "10px",
+              margin: "0 0 20px",
+              "@media (min-width: 800px)": {
+                marginBottom: "30px",
+              },
             }}
           >
-            YEAR OF EXPERIENCE
+            I'm in the middle of a carrear change, very excited to learn more
+            and more every day. . .
           </Typography>
+          <Link
+            href="#"
+            sx={{
+              color: "#5CC185",
+              fontSize: "20px",
+              textDecoration: "none",
+              width: "90%",
+              margin: "0 0 20px",
+              fontFamily: "'Anonymous Pro', monospace;",
+              "@media (min-width: 800px)": {
+                marginTop: "30px",
+                marginBottom: "30px",
+              },
+            }}
+          >
+            HIRE ME!
+          </Link>
+          <Card
+            elevation={0}
+            sx={{
+              display: "flex",
+              backgroundColor: "#2D2E32",
+            }}
+          >
+            <Typography sx={{ color: "#fff", fontSize: "30px" }}>1</Typography>
+            <Typography
+              sx={{
+                color: "#646569",
+                fontSize: "14px",
+                width: "80px",
+                marginLeft: "10px",
+              }}
+            >
+              YEAR OF EXPERIENCE
+            </Typography>
+          </Card>
         </Card>
-      </Card>
+      </Box>
     </Paper>
   );
 };
